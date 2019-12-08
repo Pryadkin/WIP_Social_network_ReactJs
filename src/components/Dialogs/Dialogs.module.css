@@ -1,0 +1,21 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr
+}
+
+.dialog:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.messages__container {
+  background-color: lightgrey;
+}
+
+.message {
+  border-radius: 10px;
+  background-color: lightgreen;
+  margin: 10px 0;
+  padding: 10px;
+  width: 70%;
+}

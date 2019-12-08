@@ -7,14 +7,16 @@ import { Route, BrowserRouter } from 'react-router-dom'
 import './App.css'
 
 
-function App() {
+function App(props) {
+  const { state } = props;
+
   return (
     <BrowserRouter>
     <div className="app-wrapper">
       <Header />
       <Navbar />
-      <Route path='/profile' component={ Profile }/>
-      <Route path='/dialog' component={ Dialogs }/>
+      <Route path='/profile' render={ () => <Profile state={state} /> }/>
+      <Route path='/dialog' render={ () => <Dialogs state={state} /> }/>
     </div>
     </BrowserRouter>
   );
