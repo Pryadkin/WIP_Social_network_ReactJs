@@ -5,7 +5,7 @@ import s from './Header.module.css'
 const Header = () => {
    return (
       <header className={s.header}>
-        <div style={{width: "100%", height: "100%", background: "green"}}>LOGO</div>
+        <div className={s.logo}>LOGO</div>
       </header>
    )
 }

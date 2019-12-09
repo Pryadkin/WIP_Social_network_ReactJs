@@ -1,0 +1,12 @@
+.sitebar {
+  display: grid;
+  grid-area: sitebar;
+  background-color: #455965;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.navItem {
+  color: white;
+  text-decoration: none;
+}

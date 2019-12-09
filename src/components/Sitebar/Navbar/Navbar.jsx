@@ -1,5 +1,6 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+
 
 import s from './Navbar.module.css'
 
@@ -15,7 +16,7 @@ const Havbar = () => {
           Profile</NavLink>
         </div>
         <div>
-        <NavLink
+          <NavLink
             to="/dialog"
             className={s.navItem}
             activeClassName="activeLink"
@@ -23,7 +24,7 @@ const Havbar = () => {
           Messages</NavLink>
         </div>
         <div>
-        <NavLink
+          <NavLink
             to="/news"
             className={s.navItem}
             activeClassName="activeLink"
@@ -31,20 +32,12 @@ const Havbar = () => {
           News</NavLink>
         </div>
         <div>
-        <NavLink
+          <NavLink
             to="/music"
             className={s.navItem}
             activeClassName="activeLink"
           >
           Music</NavLink>
-        </div>
-        <div>
-        <NavLink
-            to="/settings"
-            className={s.navItem}
-            activeClassName="activeLink"
-          >
-          Settings</NavLink>
         </div>
       </nav>
    )

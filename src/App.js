@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './components/Header/Header'
-import Navbar from './components/Navbar/Navbar'
+import Sitebar from './components/Sitebar/Sitebar'
 import Profile from './components/Profile/Profile'
 import Dialogs from './components/Dialogs/Dialogs'
 import { Route, BrowserRouter } from 'react-router-dom'
@@ -14,7 +14,7 @@ function App(props) {
     <BrowserRouter>
     <div className="app-wrapper">
       <Header />
-      <Navbar />
+      <Sitebar state={state}/>
       <Route path='/profile' render={ () => <Profile state={state} /> }/>
       <Route path='/dialog' render={ () => <Dialogs state={state} /> }/>
     </div>

@@ -1,8 +1,16 @@
+h1 {
+   font-family: 'Dosis', sans-serif;
+   font-weight: normal;
+   font-size: 50px;
+   margin-bottom: 0;
+   color: white;
+}
+
 .app-wrapper {
    display: grid;
    grid-template-rows: 60px 1fr;
    grid-template-columns: 2fr 10fr;
    grid-template-areas:
-   "h h"
-   "n c";
+   "header header"
+   "sitebar profileContent";
 }
