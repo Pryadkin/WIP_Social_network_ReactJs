@@ -5,14 +5,16 @@ import ProfileInfo from './ProfileInfo/ProfileInfo'
 import s from './Profile.module.css'
 
 const Profile = props => {
-  const { state } = props;
-  const posts = state.profilePage.posts;
+  const { state, setPosts, updateNewPostText } = props;
+  const profilePage = state.profilePage;
 
    return (
     <div className={s.content}>
       <ProfileInfo />
       <MyPosts
-        posts={posts}
+        profilePage={profilePage}
+        setPosts={setPosts}
+        updateNewPostText={updateNewPostText}
       />
     </div>
    )
