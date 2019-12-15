@@ -32,12 +32,13 @@ const store = {
          ]
       }
    },
-   getState() {
-      return this._state;
-   },
    _callSubscriber() {
       console.log('change state')
    },
+   getState() {
+      return this._state;
+   },   
+   
    setPosts(message) {
       const post = { id: 2, message: message, liksCount: 55};
       this._state.profilePage.posts.push(post);   
