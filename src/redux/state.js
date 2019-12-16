@@ -1,5 +1,7 @@
 const SET_POST = 'SET_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+const SEND_MESSAGE = 'SEND_MESSAGE';
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
 
 const store = {
    _state: {
@@ -23,6 +25,7 @@ const store = {
             { name: "Name_3", id: 3 },
             { name: "Name_4", id: 4 },
          ],
+         newMessageBody: '',
       },
       sitebar: {
          friends: [
@@ -44,7 +47,6 @@ const store = {
    subscribe(observer) {
       this._callSubscriber = observer;
    },
-
    despatch(action) {
       if (action.type === 'SET_POST') {
          const post = {
@@ -60,6 +62,19 @@ const store = {
          this._state.profilePage.newPostsText = action.message;  // Обнуляем textarea после отправки сообщения
          this._callSubscriber(store.getState());
       }
+      if (action.type === 'SEND_MESSAGE') {
+         const message = {
+            id: 4,
+            message: this._state.messagesPage.newMessageBody,
+         };
+         this._state.messagesPage.messages.push(message);
+         this._state.messagesPage.newMessageBody = '';
+         this._callSubscriber(store.getState());
+      }
+      if (action.type === 'UPDATE_NEW_MESSAGE_BODY') {
+         this._state.messagesPage.newMessageBody = action.message;
+         this._callSubscriber(store.getState());
+      }
    },
 }
 
@@ -67,9 +82,17 @@ export const setPostActionCreator = () => ({
    type: SET_POST
 })
 
-
 export const updateNewPostTextActionCreator = value => ({
    type: UPDATE_NEW_POST_TEXT,
+   message: value
+})
+
+export const sendMessageCreator = () => ({
+   type: SEND_MESSAGE
+})
+
+export const updateNewMessageBodyCreator = value => ({
+   type: UPDATE_NEW_MESSAGE_BODY,
    message: value
 })
 

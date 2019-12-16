@@ -14,13 +14,20 @@ function App(props) {
     <div className="app-wrapper">
       <Header />
       <Sitebar state={state}/>
-      <Route path='/profile' render={ () =>
-        <Profile
-          state={state}
-          despatch={despatch}
-        />
+      <Route path='/profile' render={ () => (
+          <Profile
+            state={state}
+            despatch={despatch}
+          />
+        )
       }/>
-      <Route path='/dialog' render={ () => <Dialogs state={state} /> }/>
+      <Route path='/dialog' render={ () => (
+          <Dialogs
+            state={state}
+            despatch={despatch}
+          />
+        )
+      }/>
     </div>
   );
 }
