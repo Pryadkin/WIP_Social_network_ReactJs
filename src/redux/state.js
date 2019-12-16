@@ -1,3 +1,6 @@
+const SET_POST = 'SET_POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+
 const store = {
    _state: {
       profilePage: {
@@ -42,11 +45,11 @@ const store = {
       this._callSubscriber = observer;
    },
 
-   despatch(action) {// type: SET_POST
+   despatch(action) {
       if (action.type === 'SET_POST') {
          const post = {
             id: 2,
-            message: action.message,
+            message: this._state.profilePage.newPostsText,
             liksCount: 55
          };
          this._state.profilePage.posts.push(post);
@@ -58,8 +61,17 @@ const store = {
          this._callSubscriber(store.getState());
       }
    },
-
 }
+
+export const setPostActionCreator = () => ({
+   type: SET_POST
+})
+
+
+export const updateNewPostTextActionCreator = value => ({
+   type: UPDATE_NEW_POST_TEXT,
+   message: value
+})
 
 export default store;
 window.store = store;

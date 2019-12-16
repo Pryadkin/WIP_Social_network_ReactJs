@@ -1,5 +1,6 @@
 import React from 'react'
 import Post from '../Post/Post'
+import { setPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/state'
 
 import s from './MyPosts.module.css'
 
@@ -11,13 +12,14 @@ const MyPosts = props => {
   const newPostsText = profilePage.newPostsText;
 
   const addPost = () => {
-    const value = textareaValue.current.value;
-    despatch({type: 'SET_POST', message: value});
+    const action = setPostActionCreator();
+    despatch(action);
   }
 
   const onPostChange= () => {
     const value = textareaValue.current.value;
-    despatch({type: 'UPDATE_NEW_POST_TEXT', message: value});
+    const action = updateNewPostTextActionCreator(value);
+    despatch(action);
   }
 
   const postElements = posts.map(elem => {
