@@ -37,21 +37,28 @@ const store = {
    },
    getState() {
       return this._state;
-   },   
-   
-   setPosts(message) {
-      const post = { id: 2, message: message, liksCount: 55};
-      this._state.profilePage.posts.push(post);   
-      this._state.profilePage.newPostsText = '';  // Обнуляем textarea после отправки сообщения
-      this._callSubscriber(store.getState());  
    },
-   updateNewPostText(newText) {
-      this._state.profilePage.newPostsText = newText;
-      this._callSubscriber(store.getState());
-   },   
    subscribe(observer) {
       this._callSubscriber = observer;
    },
+
+   despatch(action) {// type: SET_POST
+      if (action.type === 'SET_POST') {
+         const post = {
+            id: 2,
+            message: action.message,
+            liksCount: 55
+         };
+         this._state.profilePage.posts.push(post);
+         this._state.profilePage.newPostsText = '';  // Обнуляем textarea после отправки сообщения
+         this._callSubscriber(store.getState());
+      }
+      if (action.type === 'UPDATE_NEW_POST_TEXT') {
+         this._state.profilePage.newPostsText = action.message;  // Обнуляем textarea после отправки сообщения
+         this._callSubscriber(store.getState());
+      }
+   },
+
 }
 
 export default store;

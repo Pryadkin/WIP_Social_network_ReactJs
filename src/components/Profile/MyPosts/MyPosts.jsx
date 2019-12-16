@@ -6,18 +6,18 @@ import s from './MyPosts.module.css'
 const textareaValue = React.createRef();
 
 const MyPosts = props => {
-  const { profilePage, setPosts, updateNewPostText } = props;
+  const { profilePage, despatch } = props;
   const posts = profilePage.posts;
   const newPostsText = profilePage.newPostsText;
 
   const addPost = () => {
     const value = textareaValue.current.value;
-    setPosts(value);
+    despatch({type: 'SET_POST', message: value});
   }
 
   const onPostChange= () => {
     const value = textareaValue.current.value;
-    updateNewPostText(value);
+    despatch({type: 'UPDATE_NEW_POST_TEXT', message: value});
   }
 
   const postElements = posts.map(elem => {
@@ -32,15 +32,15 @@ const MyPosts = props => {
 
    return (
       <div>
-        <textarea 
+        <textarea
           className={s.myPostTextarea}
           ref={textareaValue}
           value={newPostsText}
           onChange={onPostChange}
           rows='4'
-          cols='40'       
+          cols='40'
         />
-        <button 
+        <button
           className={s.myPostButSent}
           onClick={addPost}
         >

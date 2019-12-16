@@ -5,7 +5,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo'
 import s from './Profile.module.css'
 
 const Profile = props => {
-  const { state, setPosts, updateNewPostText } = props;
+  const { state, despatch } = props;
   const profilePage = state.profilePage;
 
    return (
@@ -13,8 +13,7 @@ const Profile = props => {
       <ProfileInfo />
       <MyPosts
         profilePage={profilePage}
-        setPosts={setPosts}
-        updateNewPostText={updateNewPostText}
+        despatch={despatch}
       />
     </div>
    )

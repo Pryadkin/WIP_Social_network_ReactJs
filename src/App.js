@@ -8,17 +8,16 @@ import './App.css'
 
 
 function App(props) {
-  const { state, setPosts, updateNewPostText } = props;
+  const { state, despatch } = props;
 
-  return (    
+  return (
     <div className="app-wrapper">
       <Header />
       <Sitebar state={state}/>
-      <Route path='/profile' render={ () => 
-        <Profile 
-          state={state} 
-          setPosts={setPosts}
-          updateNewPostText={updateNewPostText}
+      <Route path='/profile' render={ () =>
+        <Profile
+          state={state}
+          despatch={despatch}
         />
       }/>
       <Route path='/dialog' render={ () => <Dialogs state={state} /> }/>

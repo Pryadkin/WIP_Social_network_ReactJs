@@ -5,12 +5,11 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom'
 import store from './redux/state';
 
-let rerenderEntireTree = (state) => {   
+let rerenderEntireTree = (state) => {
 ReactDOM.render(
    <BrowserRouter>
-   <App state={state} 
-      setPosts={store.setPosts.bind(store)}
-      updateNewPostText={store.updateNewPostText.bind(store)}
+   <App state={state}
+      despatch={store.despatch.bind(store)}
    />
    </BrowserRouter>, document.getElementById('root'));
 };
