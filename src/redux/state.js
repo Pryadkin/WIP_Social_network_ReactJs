@@ -48,7 +48,7 @@ const store = {
       this._callSubscriber = observer;
    },
    despatch(action) {
-      if (action.type === 'SET_POST') {
+      if (action.type === SET_POST) {
          const post = {
             id: 2,
             message: this._state.profilePage.newPostsText,
@@ -58,11 +58,11 @@ const store = {
          this._state.profilePage.newPostsText = '';  // Обнуляем textarea после отправки сообщения
          this._callSubscriber(store.getState());
       }
-      if (action.type === 'UPDATE_NEW_POST_TEXT') {
+      if (action.type === UPDATE_NEW_POST_TEXT) {
          this._state.profilePage.newPostsText = action.message;  // Обнуляем textarea после отправки сообщения
          this._callSubscriber(store.getState());
       }
-      if (action.type === 'SEND_MESSAGE') {
+      if (action.type === SEND_MESSAGE) {
          const message = {
             id: 4,
             message: this._state.messagesPage.newMessageBody,
@@ -71,7 +71,7 @@ const store = {
          this._state.messagesPage.newMessageBody = '';
          this._callSubscriber(store.getState());
       }
-      if (action.type === 'UPDATE_NEW_MESSAGE_BODY') {
+      if (action.type === UPDATE_NEW_MESSAGE_BODY) {
          this._state.messagesPage.newMessageBody = action.message;
          this._callSubscriber(store.getState());
       }
