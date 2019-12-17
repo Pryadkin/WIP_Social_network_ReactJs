@@ -1,7 +1,6 @@
-const SET_POST = 'SET_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
-const SEND_MESSAGE = 'SEND_MESSAGE';
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
+import profileReducer from './profileReducer'
+import dialogsReducer from './dialogsReducer'
+import sitebarReducer from './sitebarReducer'
 
 const store = {
    _state: {
@@ -48,53 +47,13 @@ const store = {
       this._callSubscriber = observer;
    },
    despatch(action) {
-      if (action.type === SET_POST) {
-         const post = {
-            id: 2,
-            message: this._state.profilePage.newPostsText,
-            liksCount: 55
-         };
-         this._state.profilePage.posts.push(post);
-         this._state.profilePage.newPostsText = '';  // Обнуляем textarea после отправки сообщения
-         this._callSubscriber(store.getState());
-      }
-      if (action.type === UPDATE_NEW_POST_TEXT) {
-         this._state.profilePage.newPostsText = action.message;  // Обнуляем textarea после отправки сообщения
-         this._callSubscriber(store.getState());
-      }
-      if (action.type === SEND_MESSAGE) {
-         const message = {
-            id: 4,
-            message: this._state.messagesPage.newMessageBody,
-         };
-         this._state.messagesPage.messages.push(message);
-         this._state.messagesPage.newMessageBody = '';
-         this._callSubscriber(store.getState());
-      }
-      if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-         this._state.messagesPage.newMessageBody = action.message;
-         this._callSubscriber(store.getState());
-      }
+      this._state.profilePage = profileReducer(this._state.profilePage, action);
+      this._state.messagesPage = dialogsReducer(this._state.messagesPage, action);
+      this._state.sitebar = sitebarReducer(this._state.sitebar, action);
+
+      this._callSubscriber(this._state);
    },
 }
-
-export const setPostActionCreator = () => ({
-   type: SET_POST
-})
-
-export const updateNewPostTextActionCreator = value => ({
-   type: UPDATE_NEW_POST_TEXT,
-   message: value
-})
-
-export const sendMessageCreator = () => ({
-   type: SEND_MESSAGE
-})
-
-export const updateNewMessageBodyCreator = value => ({
-   type: UPDATE_NEW_MESSAGE_BODY,
-   message: value
-})
 
 export default store;
 window.store = store;
