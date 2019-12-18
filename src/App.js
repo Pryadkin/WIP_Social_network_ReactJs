@@ -8,7 +8,7 @@ import './App.css'
 
 
 function App(props) {
-  const { state, despatch } = props;
+  const { state, dispatch } = props;
 
   return (
     <div className="app-wrapper">
@@ -17,14 +17,14 @@ function App(props) {
       <Route path='/profile' render={ () => (
           <Profile
             state={state}
-            despatch={despatch}
+            dispatch={dispatch}
           />
         )
       }/>
       <Route path='/dialog' render={ () => (
           <Dialogs
             state={state}
-            despatch={despatch}
+            dispatch={dispatch}
           />
         )
       }/>

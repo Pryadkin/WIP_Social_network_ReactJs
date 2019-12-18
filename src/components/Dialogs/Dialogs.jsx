@@ -7,7 +7,7 @@ import s from './Dialogs.module.css'
 
 const Dialogs = props => {
   const { state } = props;
-  const { despatch } = props;
+  const { dispatch } = props;
   const dialogs = state.messagesPage.dialogs;
   const messages = state.messagesPage.messages;
   const newMessageBody = state.messagesPage.newMessageBody;
@@ -35,12 +35,12 @@ const Dialogs = props => {
   const onNewMessageChange = (e) => {
     const message = e.target.value;
     const action = updateNewMessageBodyCreator(message);
-    despatch(action);
+    dispatch(action);
   }
 
   const onSendMessageClick = () => {
     const action = sendMessageCreator();
-    despatch(action);
+    dispatch(action);
   }
 
   return (

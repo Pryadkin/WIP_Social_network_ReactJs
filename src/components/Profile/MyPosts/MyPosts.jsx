@@ -7,19 +7,19 @@ import s from './MyPosts.module.css'
 const textareaValue = React.createRef();
 
 const MyPosts = props => {
-  const { profilePage, despatch } = props;
+  const { profilePage, dispatch } = props;
   const posts = profilePage.posts;
   const newPostsText = profilePage.newPostsText;
 
   const addPost = () => {
     const action = setPostActionCreator();
-    despatch(action);
+    dispatch(action);
   }
 
   const onPostChange= () => {
     const value = textareaValue.current.value;
     const action = updateNewPostTextActionCreator(value);
-    despatch(action);
+    dispatch(action);
   }
 
   const postElements = posts.map(elem => {

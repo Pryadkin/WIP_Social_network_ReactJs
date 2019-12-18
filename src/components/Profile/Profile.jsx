@@ -5,7 +5,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo'
 import s from './Profile.module.css'
 
 const Profile = props => {
-  const { state, despatch } = props;
+  const { state, dispatch } = props;
   const profilePage = state.profilePage;
 
    return (
@@ -13,7 +13,7 @@ const Profile = props => {
       <ProfileInfo />
       <MyPosts
         profilePage={profilePage}
-        despatch={despatch}
+        dispatch={dispatch}
       />
     </div>
    )
