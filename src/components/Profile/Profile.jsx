@@ -1,8 +1,8 @@
-import React from 'react'
-import MyPosts from './MyPosts/MyPosts'
-import ProfileInfo from './ProfileInfo/ProfileInfo'
+import React from 'react';
+import MyPostsContainer from './MyPosts/MyPostsContainer';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-import s from './Profile.module.css'
+import s from './Profile.module.css';
 
 const Profile = props => {
   const { state, dispatch } = props;
@@ -11,7 +11,7 @@ const Profile = props => {
    return (
     <div className={s.content}>
       <ProfileInfo />
-      <MyPosts
+      <MyPostsContainer
         profilePage={profilePage}
         dispatch={dispatch}
       />

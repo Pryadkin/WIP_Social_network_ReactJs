@@ -1,13 +1,15 @@
 import React from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import { sendMessageCreator, updateNewMessageBodyCreator } from '../../redux/dialogsReducer';
 
 import s from './Dialogs.module.css'
 
 const Dialogs = props => {
-  const { state } = props;
-  const { dispatch } = props;
+  const {
+    state,
+    onNewMessageChange,
+    onSendMessageClick,
+  } = props;
   const dialogs = state.messagesPage.dialogs;
   const messages = state.messagesPage.messages;
   const newMessageBody = state.messagesPage.newMessageBody;
@@ -32,15 +34,13 @@ const Dialogs = props => {
     )
   })
 
-  const onNewMessageChange = (e) => {
+  const onNewMessageChangeHandler = (e) => {
     const message = e.target.value;
-    const action = updateNewMessageBodyCreator(message);
-    dispatch(action);
+    onNewMessageChange(message);
   }
 
-  const onSendMessageClick = () => {
-    const action = sendMessageCreator();
-    dispatch(action);
+  const onSendMessageClickHandler = () => {
+    const action = onSendMessageClick();
   }
 
   return (
@@ -56,13 +56,13 @@ const Dialogs = props => {
               className={s.messageTextarea}
               placeholder='Enter your message'
               value={ newMessageBody }
-              onChange={ onNewMessageChange }
+              onChange={ onNewMessageChangeHandler }
             ></textarea>
 
             <div>
               <button
                 className={s.but}
-                onClick={ onSendMessageClick }
+                onClick={ onSendMessageClickHandler }
               >
                 Send
               </button>

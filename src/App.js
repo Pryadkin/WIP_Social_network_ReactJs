@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './components/Header/Header'
 import Sitebar from './components/Sitebar/Sitebar'
 import Profile from './components/Profile/Profile'
-import Dialogs from './components/Dialogs/Dialogs'
+import DialogsContainer from './components/Dialogs/DialogsContainer'
 import { Route } from 'react-router-dom'
 import './App.css'
 
@@ -22,7 +22,7 @@ function App(props) {
         )
       }/>
       <Route path='/dialog' render={ () => (
-          <Dialogs
+          <DialogsContainer
             state={state}
             dispatch={dispatch}
           />

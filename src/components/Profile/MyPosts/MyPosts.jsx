@@ -1,25 +1,22 @@
 import React from 'react'
 import Post from '../Post/Post'
-import { setPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/profileReducer'
 
 import s from './MyPosts.module.css'
 
 const textareaValue = React.createRef();
 
 const MyPosts = props => {
-  const { profilePage, dispatch } = props;
+  const { addPost, onPostChange, profilePage } = props;
   const posts = profilePage.posts;
   const newPostsText = profilePage.newPostsText;
 
-  const addPost = () => {
-    const action = setPostActionCreator();
-    dispatch(action);
+  const addPostHandler = () => {
+    addPost();
   }
 
-  const onPostChange= () => {
+  const onPostChangeHandler= () => {
     const value = textareaValue.current.value;
-    const action = updateNewPostTextActionCreator(value);
-    dispatch(action);
+    onPostChange(value);
   }
 
   const postElements = posts.map(elem => {
@@ -38,13 +35,13 @@ const MyPosts = props => {
           className={s.myPostTextarea}
           ref={textareaValue}
           value={newPostsText}
-          onChange={onPostChange}
+          onChange={onPostChangeHandler}
           rows='4'
           cols='40'
         />
         <button
           className={s.myPostButSent}
-          onClick={addPost}
+          onClick={addPostHandler}
         >
           add post
         </button>
