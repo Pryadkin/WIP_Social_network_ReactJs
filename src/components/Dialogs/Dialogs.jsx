@@ -40,7 +40,7 @@ const Dialogs = props => {
   }
 
   const onSendMessageClickHandler = () => {
-    const action = onSendMessageClick();
+    onSendMessageClick();
   }
 
   return (

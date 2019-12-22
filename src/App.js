@@ -1,34 +1,28 @@
 import React from 'react'
 import Header from './components/Header/Header'
-import Sitebar from './components/Sitebar/Sitebar'
 import Profile from './components/Profile/Profile'
+import SitebarContainer from './components/Sitebar/SitebarContainer'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
 import { Route } from 'react-router-dom'
 import './App.css'
 
 
-function App(props) {
-  const { state, dispatch } = props;
-
-  return (
-    <div className="app-wrapper">
+function App() {
+  return (    
+    <div className="app-wrapper">      
       <Header />
-      <Sitebar state={state}/>
+      <SitebarContainer />
       <Route path='/profile' render={ () => (
-          <Profile
-            state={state}
-            dispatch={dispatch}
-          />
+          <Profile />
         )
       }/>
       <Route path='/dialog' render={ () => (
-          <DialogsContainer
-            state={state}
-            dispatch={dispatch}
-          />
+          <DialogsContainer />
         )
       }/>
+      
     </div>
+    
   );
 }
 
