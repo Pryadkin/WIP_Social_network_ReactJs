@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 
+// styles
 import s from '../Dialogs.module.css'
 
 const DialogItem = props => {
@@ -12,9 +13,9 @@ const DialogItem = props => {
         to={link}
         activeClassName="activeLink"
       >
-        { name }
+        {name}
       </NavLink>
-      </div>
+    </div>
   )
 }
 

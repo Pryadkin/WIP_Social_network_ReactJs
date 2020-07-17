@@ -1,19 +1,20 @@
 import React from 'react';
-import Sitebar from './Sitebar';
 import StoreContext from '../../redux/StoreContext';
 
+// components
+import Sitebar from './Sitebar';
 
 const SitebarContainer = () => {
   return (
-    <StoreContext.Consumer> 
+    <StoreContext.Consumer>
       {
         store => {
-          
+
           return (
-            <Sitebar state={store.getState()}/>
+            <Sitebar state={store.getState()} />
           )
-        }  
-      }      
+        }
+      }
     </StoreContext.Consumer>
   )
 }

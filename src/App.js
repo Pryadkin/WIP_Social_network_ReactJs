@@ -17,12 +17,10 @@ function App() {
       <SitebarContainer />
       <Route path='/profile' render={() => (
         <Profile />
-      )
-      } />
+      )} />
       <Route path='/dialog' render={() => (
         <DialogsContainer />
-      )
-      } />
+      )} />
 
     </div>
 

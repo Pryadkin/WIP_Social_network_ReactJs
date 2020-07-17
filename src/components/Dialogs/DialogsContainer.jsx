@@ -1,21 +1,21 @@
 import React from 'react';
-import Dialogs from './Dialogs'
 import { sendMessageCreator, updateNewMessageBodyCreator } from '../../redux/dialogsReducer';
 import StoreContext from '../../redux/StoreContext';
+
+// components
+import Dialogs from './Dialogs'
 
 const DialogsContainer = () => {
 
   return (
     <StoreContext.Consumer>
-      { store => {
+      {store => {
         const onNewMessageChange = (message) => {
-          const action = updateNewMessageBodyCreator(message);
-          store.dispatch(action);
+          store.dispatch(updateNewMessageBodyCreator(message));
         }
-      
+
         const onSendMessageClick = () => {
-          const action = sendMessageCreator();
-          store.dispatch(action);
+          store.dispatch(sendMessageCreator());
         }
         return (
           <Dialogs
@@ -24,7 +24,7 @@ const DialogsContainer = () => {
             onSendMessageClick={onSendMessageClick}
           />
         )
-      }}      
+      }}
     </StoreContext.Consumer>
   )
 }

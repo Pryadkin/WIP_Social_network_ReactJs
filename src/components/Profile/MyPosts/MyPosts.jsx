@@ -1,12 +1,18 @@
 import React from 'react'
+
+// components
 import Post from '../Post/Post'
 
+// styles
 import s from './MyPosts.module.css'
 
 const textareaValue = React.createRef();
 
-const MyPosts = props => {
-  const { addPost, onPostChange, profilePage } = props;
+const MyPosts = (
+  addPost,
+  onPostChange,
+  profilePage
+) => {
   const posts = profilePage.posts;
   const newPostsText = profilePage.newPostsText;
 
@@ -14,7 +20,7 @@ const MyPosts = props => {
     addPost();
   }
 
-  const onPostChangeHandler= () => {
+  const onPostChangeHandler = () => {
     const value = textareaValue.current.value;
     onPostChange(value);
   }
@@ -23,31 +29,31 @@ const MyPosts = props => {
     const { liksCount, message } = elem;
     return (
       <Post
-        message={ message }
-        liksCount={ liksCount }
+        message={message}
+        liksCount={liksCount}
       />
     )
   })
 
-   return (
-      <div>
-        <textarea
-          className={s.myPostTextarea}
-          ref={textareaValue}
-          value={newPostsText}
-          onChange={onPostChangeHandler}
-          rows='4'
-          cols='40'
-        />
-        <button
-          className={s.myPostButSent}
-          onClick={addPostHandler}
-        >
-          add post
+  return (
+    <div>
+      <textarea
+        className={s.myPostTextarea}
+        ref={textareaValue}
+        value={newPostsText}
+        onChange={onPostChangeHandler}
+        rows='4'
+        cols='40'
+      />
+      <button
+        className={s.myPostButSent}
+        onClick={addPostHandler}
+      >
+        add post
         </button>
-        { postElements }
-      </div>
-   )
+      {postElements}
+    </div>
+  )
 }
 
 export default MyPosts;
