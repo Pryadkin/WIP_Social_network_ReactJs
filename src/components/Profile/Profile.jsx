@@ -7,17 +7,12 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 // styles
 import s from './Profile.module.css';
 
-const Profile = props => {
-  // const { state, dispatch } = props;
-  // const profilePage = state.profilePage;
+const Profile = () => {
 
   return (
     <div className={s.content}>
       <ProfileInfo />
-      <MyPostsContainer
-      // profilePage={profilePage}
-      // dispatch={dispatch}
-      />
+      <MyPostsContainer />
     </div>
   )
 }

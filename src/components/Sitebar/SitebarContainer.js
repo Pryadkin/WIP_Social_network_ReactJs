@@ -1,22 +1,14 @@
-import React from 'react';
-import StoreContext from '../../redux/StoreContext';
+import { connect } from 'react-redux';
 
 // components
 import Sitebar from './Sitebar';
 
-const SitebarContainer = () => {
-  return (
-    <StoreContext.Consumer>
-      {
-        store => {
-
-          return (
-            <Sitebar state={store.getState()} />
-          )
-        }
-      }
-    </StoreContext.Consumer>
-  )
+let mapStateToProps = (state) => {
+  return {
+    state
+  }
 }
+
+const SitebarContainer = connect(mapStateToProps)(Sitebar);
 
 export default SitebarContainer;

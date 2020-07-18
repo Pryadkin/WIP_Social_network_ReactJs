@@ -7,11 +7,11 @@ import Message from './Message/Message';
 // styles
 import s from './Dialogs.module.css'
 
-const Dialogs = (
+const Dialogs = ({
   state,
   onNewMessageChange,
   onSendMessageClick,
-) => {
+}) => {
   const dialogs = state.messagesPage.dialogs;
   const messages = state.messagesPage.messages;
   const newMessageBody = state.messagesPage.newMessageBody;
@@ -20,6 +20,7 @@ const Dialogs = (
     const { name, id } = elem;
     return (
       <DialogItem
+        key={id}
         name={name}
         id={id}
       />
@@ -30,6 +31,7 @@ const Dialogs = (
     const { message, id } = elem;
     return (
       <Message
+        key={id}
         message={message}
         id={id}
       />

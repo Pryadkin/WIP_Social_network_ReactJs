@@ -12,9 +12,12 @@ const Friends = props => {
       <h1>Friends</h1>
 
       <div className={s.friends__container}>
-        {friendsData.map(friend => {
+        {friendsData.map((friend, index) => {
           return (
-            <div className={s.friend}>
+            <div
+              key={`${friend.name}-${index}`}
+              className={s.friend}
+            >
               <img src={friend.img} alt="avatar" />
               <div className={s.friend__name}>
                 {friend.name}

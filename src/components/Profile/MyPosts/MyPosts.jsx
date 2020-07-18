@@ -8,13 +8,14 @@ import s from './MyPosts.module.css'
 
 const textareaValue = React.createRef();
 
-const MyPosts = (
+const MyPosts = ({
   addPost,
   onPostChange,
   profilePage
-) => {
+}) => {
   const posts = profilePage.posts;
   const newPostsText = profilePage.newPostsText;
+
 
   const addPostHandler = () => {
     addPost();
@@ -26,9 +27,10 @@ const MyPosts = (
   }
 
   const postElements = posts.map(elem => {
-    const { liksCount, message } = elem;
+    const { id, liksCount, message } = elem;
     return (
       <Post
+        key={id}
         message={message}
         liksCount={liksCount}
       />
