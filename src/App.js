@@ -6,6 +6,7 @@ import Header from './components/Header/Header'
 import Profile from './components/Profile/Profile'
 import SitebarContainer from './components/Sitebar/SitebarContainer'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
+import UsersContainer from './components/Users/UsersContainer'
 
 // styles
 import './App.css'
@@ -15,12 +16,15 @@ function App() {
     <div className="app-wrapper">
       <Header />
       <SitebarContainer />
-      <Route path='/profile' render={() => (
-        <Profile />
-      )} />
-      <Route path='/dialog' render={() => (
-        <DialogsContainer />
-      )} />
+      <Route
+        path='/profile'
+        render={() => <Profile />} />
+      <Route
+        path='/dialog'
+        render={() => <DialogsContainer />} />
+      <Route
+        path='/users'
+        render={() => <UsersContainer />} />
 
     </div>
 
