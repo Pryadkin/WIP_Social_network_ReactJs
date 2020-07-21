@@ -4,3 +4,6 @@
   border: 1px solid gray;
 }
 
+.selectedPage {
+  font-weight: bold;
+}

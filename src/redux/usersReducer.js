@@ -1,43 +1,14 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 const initialState = {
-  users: [
-    // {
-    //   id: 1,
-    //   photoUrl: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_932815.jpg',
-    //   followed: true,
-    //   fullname: 'Troy Baker',
-    //   status: 'I am a boss',
-    //   location: {
-    //     city: 'Moscow',
-    //     country: 'Russia'
-    //   }
-    // },
-    // {
-    //   id: 2,
-    //   photoUrl: 'https://thumbs.dfs.ivi.ru/storage2/contents/4/c/93625135b7ba1432825b874b3cec67.jpg',
-    //   followed: false,
-    //   fullname: 'Willem Dafoe',
-    //   status: 'I am a boss too',
-    //   location: {
-    //     city: 'Samara',
-    //     country: 'Russia'
-    //   }
-    // },
-    // {
-    //   id: 3,
-    //   photoUrl: 'https://thumbs.dfs.ivi.ru/storage2/contents/4/c/93625135b7ba1432825b874b3cec67.jpg',
-    //   followed: true,
-    //   fullname: 'Michael J. Fox',
-    //   status: 'I am a boss too',
-    //   location: {
-    //     city: 'Moscow',
-    //     country: 'Russia'
-    //   }
-    // },
-  ]
+  users: [],
+  pageSize: 100,
+  totalUsersCount: 0,
+  currentPage: 1,
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -63,10 +34,19 @@ const usersReducer = (state = initialState, action) => {
         })
       };
     case SET_USERS:
-      console.log(action)
       return {
         ...state,
-        users: [...state.users, ...action.payload]
+        users: action.payload
+      };
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload
+      };
+    case SET_TOTAL_USERS_COUNT:
+      return {
+        ...state,
+        totalUsersCount: action.payload
       };
     default:
       return state;
@@ -86,6 +66,16 @@ export const unFollowAction = userId => ({
 export const setUsersAction = users => ({
   type: SET_USERS,
   payload: users
+});
+
+export const setCurrentPageAction = currentPage => ({
+  type: SET_CURRENT_PAGE,
+  payload: currentPage
+});
+
+export const setTotalUsersCountAction = count => ({
+  type: SET_TOTAL_USERS_COUNT,
+  payload: count
 });
 
 
