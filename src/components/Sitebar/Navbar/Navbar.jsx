@@ -33,6 +33,14 @@ const Havbar = () => {
       </div>
       <div>
         <NavLink
+          to="/users"
+          className={s.navItem}
+          activeClassName="activeLink"
+        >
+          Users</NavLink>
+      </div>
+      <div>
+        <NavLink
           to="/music"
           className={s.navItem}
           activeClassName="activeLink"

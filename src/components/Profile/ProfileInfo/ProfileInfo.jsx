@@ -1,20 +1,27 @@
-import React from 'react'
+import React from 'react';
+import './ProfileInfo.css';
+import contentImg from '../../../img/header-bg.jpg';
+import Preloader from '../../common/Preloader/Preloader';
 
-// styles
-import './ProfileInfo.css'
+const ProfileInfo = (props) => {
+  if (!props.profile) {
+    return <Preloader />
+  };
 
-// picture
-import contentImg from '../../../img/header-bg.jpg'
-
-const ProfileInfo = () => {
   return (
     <>
       <img src={contentImg} alt="contentImg" />
       <div className='description__block'>
-        ava + description
+        <img
+          src={props.profile.photos.large}
+          alt="фотография пользователя"
+        />
+        <div>
+          {props.profile.aboutMe}
+        </div>
       </div>
     </>
   )
-}
+};
 
 export default ProfileInfo;

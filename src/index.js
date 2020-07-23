@@ -10,6 +10,8 @@ import App from './App';
 // styles
 import './index.css';
 
+window.store = store;
+
 ReactDOM.render(
    <BrowserRouter>
       <Provider store={store}>

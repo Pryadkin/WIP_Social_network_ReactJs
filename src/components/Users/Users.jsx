@@ -1,7 +1,7 @@
 import React from 'react';
 
 // styles
-import styles from './Users.module.css';
+import s from './Users.module.css';
 
 // pictures
 import userPhoto from '../../img/Avatar/user-logo.png';
@@ -19,7 +19,7 @@ const Users = props => {
       <div>
         {pages.map(page => (
           <span
-            className={props.currentPage === page && styles.selectedPage}
+            className={props.currentPage === page && s.selectedPage}
             onClick={() => { props.onPageChanged(page) }}
           >
             {page}
@@ -35,7 +35,7 @@ const Users = props => {
                 <div >
                   <img
                     src={user.photos.small ? user.photos.small : userPhoto}
-                    className={styles.userPhoto}
+                    className={s.userPhoto}
                     alt='UserPhoto'
                   />
                 </div>
