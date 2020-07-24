@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 // styles
 import s from './Users.module.css';
@@ -19,7 +20,8 @@ const Users = props => {
       <div>
         {pages.map(page => (
           <span
-            className={props.currentPage === page && s.selectedPage}
+            key={`page_${page}`}
+            className={props.currentPage === page ? s.selectedPage : null}
             onClick={() => { props.onPageChanged(page) }}
           >
             {page}
@@ -33,11 +35,13 @@ const Users = props => {
             <div key={user.id}>
               <span>
                 <div >
-                  <img
-                    src={user.photos.small ? user.photos.small : userPhoto}
-                    className={s.userPhoto}
-                    alt='UserPhoto'
-                  />
+                  <NavLink to={'/profile/' + user.id}>
+                    <img
+                      src={user.photos.small ? user.photos.small : userPhoto}
+                      className={s.userPhoto}
+                      alt='UserPhoto'
+                    />
+                  </NavLink>
                 </div>
                 <div>
                   {user.followed

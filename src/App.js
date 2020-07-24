@@ -17,7 +17,7 @@ function App() {
       <Header />
       <SitebarContainer />
       <Route
-        path='/profile'
+        path='/profile/:userId?'
         render={() => <ProfileContainer />} />
       <Route
         path='/dialog'
