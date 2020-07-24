@@ -4,10 +4,22 @@
    background-color: #0b2535c2;
    display: flex;
    align-items: center;
+   justify-content: space-between;
+   width: 100%;
 }
 
 .logo {
    color: white;
    padding-left: 20px;
    font-size: 30px;
+}
+
+.loginBlock {
+   margin-right: 50px;
+   color: white;
+}
+
+.loginBlock a {
+   color: white;
+   text-decoration: none;
 }

@@ -42,11 +42,11 @@ const profileReducer = (state = initialState, action) => {
   }
 }
 
-export const setPostActionCreator = () => ({
+export const setPost = () => ({
   type: SET_POST
 })
 
-export const updateNewPostTextActionCreator = value => ({
+export const updateNewPostText = value => ({
   type: UPDATE_NEW_POST_TEXT,
   payload: value
 })
