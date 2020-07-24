@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as axios from 'axios';
+import { usersAPI } from '../../api/api';
 import {
   follow,
   unFollow,
@@ -17,9 +17,8 @@ import Preloader from '../common/Preloader/Preloader';
 class UsersContainer extends Component {
   componentDidMount() {
     this.props.toggleIsFetching();
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-      .then(res => {
-        const data = res.data;
+    usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
+      .then(data => {
         this.props.toggleIsFetching();
         this.props.setUsers(data.items);
         this.props.setTotalUsersCount(data.totalCount);
@@ -29,9 +28,8 @@ class UsersContainer extends Component {
   onPageChanged = (page) => {
     this.props.setCurrentPage(page);
     this.props.toggleIsFetching();
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
-      .then(res => {
-        const data = res.data;
+    usersAPI.getUsers(page, this.props.pageSize)
+      .then(data => {
         this.props.toggleIsFetching();
         this.props.setUsers(data.items);
       })
