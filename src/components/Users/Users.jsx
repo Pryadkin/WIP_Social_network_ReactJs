@@ -47,26 +47,34 @@ const Users = props => {
                 <div>
                   {user.followed
                     ?
-                    <button onClick={() => {
-                      usersAPI.deleteUsers(user.id)
-                        .then(data => {
-                          if (data.resultCode === 0) {
-                            props.unFollow(user.id)
-                          }
-                        })
-                    }
-                    }>
+                    <button
+                      disabled={props.followingInProgress.some(id => id === user.id)}
+                      onClick={() => {
+                        props.toggleIsFollowingProgress(true, user.id);
+                        usersAPI.deleteUsers(user.id)
+                          .then(data => {
+                            if (data.resultCode === 0) {
+                              props.unFollow(user.id);
+                            }
+                            props.toggleIsFollowingProgress(false, user.id);
+                          })
+                      }
+                      }>
                       Follow
                     </button>
                     :
-                    <button onClick={() => {
-                      usersAPI.postUsers(user.id)
-                        .then(data => {
-                          if (data.resultCode === 0) {
-                            props.follow(user.id)
-                          }
-                        })
-                    }}>
+                    <button
+                      disabled={props.followingInProgress.some(id => id === user.id)}
+                      onClick={() => {
+                        props.toggleIsFollowingProgress(true, user.id);
+                        usersAPI.postUsers(user.id)
+                          .then(data => {
+                            if (data.resultCode === 0) {
+                              props.follow(user.id);
+                              props.toggleIsFollowingProgress(false, user.id);
+                            }
+                          })
+                      }}>
                       unFollow
                     </button>
                   }
