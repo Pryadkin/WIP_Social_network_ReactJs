@@ -7,6 +7,7 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 import SitebarContainer from './components/Sitebar/SitebarContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import Login from './components/Login/Login';
 
 // styles
 import './App.css';
@@ -25,6 +26,9 @@ function App() {
       <Route
         path='/users'
         render={() => <UsersContainer />} />
+      <Route
+        path='/login'
+        render={() => <Login />} />
     </div>
 
   )
