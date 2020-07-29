@@ -2,8 +2,8 @@ import React from 'react';
 
 const Login = () => {
   return (
-    <h1>
-      Login
+    <h1 style={{ color: 'black' }}>
+      Please login
     </h1>
   )
 }

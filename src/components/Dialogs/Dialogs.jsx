@@ -9,14 +9,12 @@ import Message from './Message/Message';
 import s from './Dialogs.module.css'
 
 const Dialogs = ({
-  state,
+  dialogs,
+  messages,
+  newMessageBody,
   onNewMessageChange,
   onSendMessageClick,
 }) => {
-  const dialogs = state.messagesPage.dialogs;
-  const messages = state.messagesPage.messages;
-  const newMessageBody = state.messagesPage.newMessageBody;
-  const isAuth = state.auth.isAuth;
 
   const dialogElements = dialogs.map(elem => {
     const { name, id } = elem;
@@ -28,10 +26,6 @@ const Dialogs = ({
       />
     )
   })
-
-  if (!isAuth) {
-    return <Redirect to={'/login'} />
-  };
 
   const messageElements = messages.map(elem => {
     const { message, id } = elem;
@@ -80,7 +74,6 @@ const Dialogs = ({
           </div>
         </div>
       </div>
-
     </div>
   )
 }

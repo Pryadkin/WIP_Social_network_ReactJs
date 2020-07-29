@@ -16,22 +16,12 @@ import Preloader from '../common/Preloader/Preloader';
 class UsersContainer extends Component {
   componentDidMount() {
     this.props.getUsers(this.props.currentPage, this.props.pageSize);
-
   };
 
   onPageChanged = (page) => {
     this.props.setCurrentPage(page);
     this.props.getUsers(page, this.props.pageSize);
   };
-  // onPageChanged = (page) => {
-  //   this.props.setCurrentPage(page);
-  //   this.props.toggleIsFetching();
-  //   usersAPI.getUsers(page, this.props.pageSize)
-  //     .then(data => {
-  //       this.props.toggleIsFetching();
-  //       this.props.setUsers(data.items);
-  //     })
-  // };
 
   render() {
     return (
@@ -51,7 +41,6 @@ class UsersContainer extends Component {
           />
           : <Preloader />
         }
-
       </>
     )
   }
@@ -68,7 +57,6 @@ const mapStateToProps = state => {
   }
 };
 
-
 export default connect(mapStateToProps, {
   follow,
   unFollow,
@@ -76,4 +64,4 @@ export default connect(mapStateToProps, {
   setCurrentPage,
   toggleIsFollowingProgress,
   getUsers
-})(UsersContainer)
+})(UsersContainer);

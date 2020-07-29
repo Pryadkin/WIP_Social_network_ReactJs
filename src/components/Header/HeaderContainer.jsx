@@ -12,7 +12,7 @@ class HeaderContainer extends Component {
          <Header />
       )
    }
-}
+};
 
 const mapStateToProps = state => {
    return {
@@ -21,7 +21,6 @@ const mapStateToProps = state => {
       email: state.auth.email,
       login: state.auth.login
    }
-}
-
+};
 
 export default connect(mapStateToProps, { getAuthUserData })(HeaderContainer);
