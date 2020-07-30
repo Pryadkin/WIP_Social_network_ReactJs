@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 
 // components
 import DialogItem from './DialogItem/DialogItem';
