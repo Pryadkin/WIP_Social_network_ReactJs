@@ -56,7 +56,8 @@ const mapStateToProps = state => {
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
-    followingInProgress: state.usersPage.followingInProgress
+    followingInProgress: state.usersPage.followingInProgress,
+    isAuth: state.auth.isAuth
   }
 };
 
@@ -69,5 +70,5 @@ export default compose(
     toggleIsFollowingProgress,
     getUsers
   }),
-  withAuthRedirect
+  // withAuthRedirect
 )(UsersContainer);
